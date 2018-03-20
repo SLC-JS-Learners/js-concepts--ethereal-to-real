@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-size: 104.5%;
+}
+
+.screen {
+  min-height: 100vh;
+  min-width: 90vw;
+  max-width: 90vw;
+  margin: 2vh 6vw 5vh 4vw;
+}
+
+.template {
+  display: none;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+kbd {
+  display: inline-block;
+  font-family: monospace;
+  padding: 0.075em 0.3em 0em 0.3em;
+  margin: 0.1em 0;
+  background-color: #111;
+  border: thin solid #555;
+  border-radius: 3px;
+  color: #eee;
+}
+
+pre {
+  width: 99%;
+  padding: 1em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  display: inline-block;
+  font-family: 'Source Code Pro', 'Cutive Mono', Consolas, "Lucida Console", monospace;
+  padding: 0.075em 0.3em 0em 0.3em;
+  margin: 0.1em 0;
+  border: thin solid #333;
+}
+
+pre,
+code {
+  background-color: #333;
+  color: #76FF7A;
+}
+
+a code {
+  color: #75baff;
+}
+
+img.ide-button {
+  max-height: 26px;
+  width: auto;
+  border: solid 2px #666;
+}
+
+.has-ide-button {
+  display: flex;
+  align-items: center;
+  margin: 2px auto;
+}
+
+.has-ide-button * {
+  margin: 1px 3px;
+}
+
+#dev-tools .has-ide-button {
+  margin: 9px auto;
+}

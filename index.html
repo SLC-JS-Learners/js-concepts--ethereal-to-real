@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Exploring Concepts: Ethereal to Concrete</title>
+
+		<link href="style.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+
+		<div id="dev-tools" class="screen">
+			<h2>Dev Tools Intro</h2>
+			<ul>
+				<li><em>currently</em> <a href="https://www.google.com/intl/en/chrome/" target="_blank">Chrome</a> has the best dev tools for this demo</li>
+				<li>We'll be working mostly with a combination of the "Sources" tab with the "Console" output visible:
+					<ol>
+						<li>Keyboard open "Console" command in Chrome
+							<ul>
+								<li>Mac: <kbd>cmd-opt-j</kbd> / <kbd>⌘⌥j</kbd></li>
+								<li>Windows: <kbd>ctrl-shift-j</kbd></li>
+							</ul>
+						</li>
+						<li><kbd>cmd + ]</kbd> to shift right from the "Console" tab to the "Sources" tab</li>
+						<li><kbd>esc</kbd> to toggle the "Console" view in a Dev Tools tab other than the "Console" tab
+					</ol>
+				</li>
+				<li>We need to tell Chrome where our local directory is, and give it permission to make modifications:
+					<ol>
+						<li>Click the "Filesystem" tab.</li>
+						<li>Click the "+ Add folder to workspace" button.</li>
+						<li>Navigate down to your cloned directory of the repo.</li>
+						<li>Click the "Select" button.</li>
+						<li>In the yellow toaster, click the "Allow" button.</li>
+						<li>Ensure you're showing the "index.html" file's contents.</li>
+						<li>Hide the Navigator sidebar.</li>
+						<li><span class="has-ide-button"><img class="ide-button" src="imgs/hide-left.png"></img>/<img class="ide-button" src="imgs/show-left.png"></img>/<img class="ide-button" src="imgs/hide-right.png"></img>/<img class="ide-button" src="imgs/show-right.png"></img> - expand/collapse panels</span></li>
+					</ol>
+				</li>
+				<li><kbd>cmd-s</kbd> - saves your file</li>
+				<li><kbd>cmd-r</kbd> - refreshes your webpage</li>
+			</ul>
+			<a href="#debugging-intro" class="next">Next</a>
+		</div>
+
+		<div id="debugging-intro" class="screen">
+			<h2>Debugging Intro</h2>
+			<ul>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank"><code>debugger</code></a> - code execution is paused at the <code>debugger</code> statement</li>
+
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-play.png"></img> <kbd>⌘\</kbd> resumes script</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-step-into.png"></img> <kbd>⌘;</kbd> runs the next executable statement</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-step-out-of.png"></img> <kbd>⌘⇧</kbd> run the remaining executable statements in the current function, then stop at the next executable statement outside of this function</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-step-over.png"></img> <kbd>⌘'</kbd> run the next function and then stop at the next executable function</span></li>
+			</ul>
+			<pre>
+debugger;
+
+console.log('Hello World!');</pre>
+			<a href="#scope-global" class="next">Next</a>
+		</div>
+
+		
+
+		<div id="scope-global" class="screen">
+			<h2>Scope - Global</h2>
+			<pre>
+debugger;
+
+function aFunction () {
+	console.log('Hello World from aFunction');
+};
+
+var aVar = 'Hello World from aVar';
+
+let aLet = 'Hello World from aLet';
+
+const aConst = 'Hello World from aConst';</pre>
+			<ul>
+					<li>scope - the current context of the code </br>
+						(e.g. "Lady Gaga" is recognized globally, </br>
+						"fry sauce" is recognized within Utah, </br>
+						"Sean" is recognized with the Utah Devs at Frontline Education)</li>
+				  <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting" target="_blank">hoisting</a> "...variable and function declarations are put into memory during the compile phase, but stays exactly where you typed it in your coding."
+					</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined" target="_blank"><code>undefined</code></a> - (a) A variable that exists but has not been assigned a value yet, or (b) the return value of a function without an assigned return value.</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone_and_errors_with_let" target="_blank">temporal dead zone</a> / "not defined" - <code>let</code> & <code>const</code> must be <a href="https://stackoverflow.com/a/31222689" target="_blank">initialized</a> before they can be used.</li>
+			</ul>
+			<a href="#scope-local" class="next">Next</a>
+		</div>
+		
+		<div id="scope-local" class="screen">
+			<h2>Scope - Local</h2>
+			<pre>
+debugger;
+
+function aGreeting (greeting, greetingName) {
+	return function () {
+		const msg = greeting + ' ' + greetingName + '!';
+		return msg
+	}
+};
+
+const aGreet = (greetName) => {
+	return aGreeting('Hello', greetName)
+}
+
+let aGreetWorld = aGreet('World');
+
+var aWholeGreeting = aGreetWorld();
+
+console.log(aWholeGreeting);</pre>
+			<ul>
+			<li>anonymous functions</li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#The_function_declaration_(function_statement)" target="_blank">function declaration</a> vs. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#The_function_expression_(function_expression)" target="_blank">function expression</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">fat arrow functions</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank">closures</a></li>
+			</ul>
+			<a href="#call-stack" class="next">Next</a>
+		</div>
+		
+		
+		<div id="call-stack" class="screen">
+			<h2>Call Stack</h2>
+			<ul>
+				<li><a href="https://goo.gl/bMPysg" target="_blank">Alternate Perspective</a></li>
+				<li>Call Stack</li>
+			</ul>
+			<a href="#" class="next">Next</a>
+		</div>
+		
+		
+		
+		
+
+		<div id="one" class="screen template">
+			<h2>Slide Title</h2>
+			<pre>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</pre>
+			<a href="#" class="next">Next</a>
+		</div>
+
+		<script>
+/* Put all of the code that you want to run inside this 
+   <script> element.  This, and the next, comment block 
+   should help you easily find where your active code 
+   should be. 
+*/
+
+
+
+/* Put all of the code that you want to run inside this 
+   <script> element.  This, and the previous, comment block 
+   should help you easily find where your active code 
+   should be. 
+*/    </script>
+
+	</body>
+</html>
