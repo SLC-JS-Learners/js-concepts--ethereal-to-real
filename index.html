@@ -127,6 +127,26 @@ console.log(aWholeGreeting);</pre>
 				<li><a href="https://goo.gl/bMPysg" target="_blank">Alternate Perspective</a></li>
 				<li>Call Stack</li>
 			</ul>
+			<a href="#scope-block" class="next">Next</a>
+		</div>
+
+		<div id="scope-block" class="screen">
+			<h2>Scope - Function vs Block</h2>
+			<pre>
+debugger
+var things = [];
+for (var i = 0; i < 3; i++) {
+    things[i] = function() {
+        console.log(i);
+    };
+}
+
+things[0]();
+things[1](); 
+things[2]();</pre>
+			<ul>
+				<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/ch3.md" target="_blank">Function vs. Block Scope</a></li>
+			</ul>
 			<a href="#" class="next">Next</a>
 		</div>
 		
