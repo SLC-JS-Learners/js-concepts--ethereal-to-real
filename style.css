@@ -23,6 +23,10 @@ h2 {
   margin-bottom: 0px;
 }
 
+li {
+  padding-bottom: 1.1em;
+}
+
 kbd {
   display: inline-block;
   font-family: monospace;
@@ -67,7 +71,7 @@ img.ide-button {
 
 .has-ide-button {
   display: flex;
-  align-items: center;
+  align-items: top;
   margin: 2px auto;
 }
 
@@ -77,4 +81,8 @@ img.ide-button {
 
 #dev-tools .has-ide-button {
   margin: 9px auto;
+}
+
+.has-ide-button kbd {
+  max-height: 1.75em;
 }

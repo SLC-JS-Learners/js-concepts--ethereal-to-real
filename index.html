@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Exploring Concepts: Ethereal to Concrete</title>
+		<title>Gaining Insight into JS using DevTools</title>
 
 		<link href="style.css" type="text/css" rel="stylesheet">
 	</head>
@@ -13,20 +13,30 @@
 		<div id="dev-tools" class="screen">
 			<h2>Dev Tools Intro</h2>
 			<ul>
-				<li><em>currently</em> <a href="https://www.google.com/intl/en/chrome/" target="_blank">Chrome</a> has the best dev tools for this demo</li>
-				<li>We'll be working mostly with a combination of the "Sources" tab with the "Console" output visible:
-					<ol>
+				<li>I'll be using <a href="https://www.mozilla.org/en-US/firefox/channel/desktop/#nightly" target="_blank">Firefox Nightly</a> for this presentation, but other versions of Firefox as well as <a href="https://www.google.com/intl/en/chrome/" target="_blank">Chrome</a> have similar dev tools</li>
+				<li>We'll be working mostly with a combination of the "Debugger" ("Sources" in Chrome) and "Console" tabs:
+					<ol><li>Keyboard open "Console" command in Firefox
+						<ul>
+							<li>Mac: <kbd>cmd-opt-k</kbd> / <kbd>⌘⌥k</kbd></li>
+							<li>Windows: <kbd>ctrl-shift-k</kbd></li>
+						</ul>
 						<li>Keyboard open "Console" command in Chrome
 							<ul>
 								<li>Mac: <kbd>cmd-opt-j</kbd> / <kbd>⌘⌥j</kbd></li>
 								<li>Windows: <kbd>ctrl-shift-j</kbd></li>
 							</ul>
 						</li>
-						<li><kbd>cmd + ]</kbd> to shift right from the "Console" tab to the "Sources" tab</li>
+						<li><kbd>cmd + ]</kbd> to shift right from the "Console" tab to the "Debugger"/"Sources" tab</li>
 						<li><kbd>esc</kbd> to toggle the "Console" view in a Dev Tools tab other than the "Console" tab
 					</ol>
 				</li>
-				<li>We need to tell Chrome where our local directory is, and give it permission to make modifications:
+				<li>
+					In Firefox's "Console" tab, press <kbd>cmd-b</kbd> to show the multi-line editor.
+				</li>
+				<li>
+					In Chrome's "Sources" tab, click the <ide-button>>></ide-button> to the right of "Page" & "Filesystem", then select the "Snippets" tab, then create a "+ New Snippet".
+				</li>
+				<!-- <li>We need to tell Chrome where our local directory is, and give it permission to make modifications:
 					<ol>
 						<li>Click the "Filesystem" tab.</li>
 						<li>Click the "+ Add folder to workspace" button.</li>
@@ -37,9 +47,8 @@
 						<li>Hide the Navigator sidebar.</li>
 						<li><span class="has-ide-button"><img class="ide-button" src="imgs/hide-left.png"></img>/<img class="ide-button" src="imgs/show-left.png"></img>/<img class="ide-button" src="imgs/hide-right.png"></img>/<img class="ide-button" src="imgs/show-right.png"></img> - expand/collapse panels</span></li>
 					</ol>
-				</li>
-				<li><kbd>cmd-s</kbd> - saves your file</li>
-				<li><kbd>cmd-r</kbd> - refreshes your webpage</li>
+				</li> -->
+				<li><kbd>cmd-enter</kbd> will run your program.</li>
 			</ul>
 			<a href="#debugging-intro" class="next">Next</a>
 		</div>
@@ -49,10 +58,10 @@
 			<ul>
 				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger" target="_blank"><code>debugger</code></a> - code execution is paused at the <code>debugger</code> statement</li>
 
-				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-play.png"></img> <kbd>⌘\</kbd> resumes script</span></li>
-				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-step-into.png"></img> <kbd>⌘;</kbd> runs the next executable statement</span></li>
-				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-step-out-of.png"></img> <kbd>⌘⇧</kbd> run the remaining executable statements in the current function, then stop at the next executable statement outside of this function</span></li>
-				<li><span class="has-ide-button"><img class="ide-button" src="imgs/debugger-buttons-step-over.png"></img> <kbd>⌘'</kbd> run the next function and then stop at the next executable function</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/firefox-debugger-buttons-play.png"></img> <img class="ide-button" src="imgs/chrome-debugger-buttons-play.png"></img> <kbd>⌘\</kbd>  resumes script</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/firefox-debugger-buttons-step-into.png"></img> <img class="ide-button" src="imgs/chrome-debugger-buttons-step-into.png"></img> <kbd>⌘;</kbd> runs the next executable statement</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/firefox-debugger-buttons-step-out-of.png"></img> <img class="ide-button" src="imgs/chrome-debugger-buttons-step-out-of.png"></img> <kbd>⌘⇧</kbd> run the remaining executable statements in the current function, then stop at the next executable statement outside of this function</span></li>
+				<li><span class="has-ide-button"><img class="ide-button" src="imgs/firefox-debugger-buttons-step-over.png"></img> <img class="ide-button" src="imgs/chrome-debugger-buttons-step-over.png"></img> <kbd>⌘'</kbd> run the next function and then stop at the next executable function</span></li>
 			</ul>
 			<pre>
 debugger;
@@ -69,7 +78,7 @@ console.log('Hello World!');</pre>
 debugger;
 
 function aFunction () {
-	console.log('Hello World from aFunction');
+  console.log('Hello World from aFunction');
 };
 
 var aVar = 'Hello World from aVar';
@@ -79,9 +88,9 @@ let aLet = 'Hello World from aLet';
 const aConst = 'Hello World from aConst';</pre>
 			<ul>
 					<li>scope - the current context of the code </br>
-						(e.g. "Lady Gaga" is recognized globally, </br>
+						(e.g. "Cleopatra" is recognized globally, </br>
 						"fry sauce" is recognized within Utah, </br>
-						"Sean" is recognized with the Utah Devs at Frontline Education)</li>
+						"Sean" is recognized within Myriad Genetics' SLC Tech group)</li>
 				  <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting" target="_blank">hoisting</a> "...variable and function declarations are put into memory during the compile phase, but stays exactly where you typed it in your coding."
 					</li>
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined" target="_blank"><code>undefined</code></a> - (a) A variable that exists but has not been assigned a value yet, or (b) the return value of a function without an assigned return value.</li>
@@ -96,14 +105,14 @@ const aConst = 'Hello World from aConst';</pre>
 debugger;
 
 function aGreeting (greeting, greetingName) {
-	return function () {
-		const msg = greeting + ' ' + greetingName + '!';
-		return msg
-	}
+  return function () {
+    const msg = greeting + ' ' + greetingName + '!';
+    return msg
+  }
 };
 
 const aGreet = (greetName) => {
-	return aGreeting('Hello', greetName)
+  return aGreeting('Hello', greetName)
 }
 
 let aGreetWorld = aGreet('World');
@@ -113,7 +122,7 @@ var aWholeGreeting = aGreetWorld();
 console.log(aWholeGreeting);</pre>
 			<ul>
 			<li>anonymous functions</li>
-				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#The_function_declaration_(function_statement)" target="_blank">function declaration</a> vs. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#The_function_expression_(function_expression)" target="_blank">function expression</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#The_function_declaration_function_statement" target="_blank">function declaration</a> vs. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions#The_function_expression_function_expression" target="_blank">function expression</a></li>
 				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank">fat arrow functions</a></li>
 				<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures" target="_blank">closures</a></li>
 			</ul>
@@ -136,9 +145,9 @@ console.log(aWholeGreeting);</pre>
 debugger
 var things = [];
 for (var i = 0; i < 3; i++) {
-    things[i] = function() {
-        console.log(i);
-    };
+  things[i] = function() {
+    console.log(i);
+  };
 }
 
 things[0]();
